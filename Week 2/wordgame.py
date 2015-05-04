@@ -64,8 +64,9 @@ def print_guessed(secret_word, letters_guessed):
     Returns a string which is the string secret_word with a dash used
     to replace each character that has not yet been guessed by the player  
     '''
-
-    word_so_far = ''
+    
+    word_so_far = 
+    
     
     ####### YOUR CODE HERE ######
     pass # This tells your code to skip this function; delete it when you
