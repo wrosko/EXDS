@@ -27,8 +27,7 @@ carbon_dioxide_pounds = gas_gallons*19.64
 
 #output the pounds of carbon dioxide produced
 print gas_gallons,'gallons of gasoline produces approximately',carbon_dioxide_pounds,'pounds of carbon dioxide.'
-
-
+raw_input()
 
 ##while True:
 ##    gas_gallons = raw_input('Please enter the number of gallons of gasoline: ')
