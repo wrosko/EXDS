@@ -121,5 +121,3 @@ class Hangman():
 		return "".join(progress)
  
 game = Hangman()
- 
- 
