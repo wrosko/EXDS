@@ -31,7 +31,7 @@ def load_words():
     # wordlist: list of strings
     wordlist = line.split()
     print "  ", len(wordlist), "words loaded."
-    print 'Type play() and press Enter to play a game!'
+    print 'Type play_wordgame() and press Enter to play a game!'
     return wordlist
 
 # load the dictionary of words and point to it with 
@@ -57,10 +57,11 @@ def get_word():
 
 # CONSTANTS
 #secret_word = get_word() #Change this to get_word when ready
-already_guessed = []
+#already_guessed = []
+MAX_GUESSES = 20 #Sets maximum number of incorrect guesses to 5
 
 
-def print_guessed():
+def print_guessed(secret_word, letters_guessed):
     """Checks the characters in the secret word to see if guessed letter
        is within the word. Replaces letters with a dash if the letter has
        not been guessed, and shows the letter if letter is guessed.
@@ -71,47 +72,51 @@ def print_guessed():
             print char, #If shared, print the letter
         else:
             print "_", #If not shared, print underscores
-    print "\n" #Line break
-
-def play():
-    attempts = 20 #Sets maximum number of incorrect guesses to 5
+    print #Line break
+    sorted(already_guessed)
+    already_guessed.sort()
+    print "You've already guessed:  ", already_guessed
+    print
+    
+def play_wordgame():
     won = False #Game over controller
+    global MAX_GUESSES
+    global already_guessed
+    already_guessed = []
     global word_so_far
     word_so_far = '' #Empty variable that raw_input will add to
     global secret_word
-    secret_word = get_word()
-    while attempts > 0 and won == False:
-        print_guessed()
+    secret_word = get_word() #change to secret_word = get_word() when ready
+    while MAX_GUESSES > 0 and won == False:
+        print_guessed(secret_word, already_guessed)
         if len(word_so_far) == len(''.join(set(secret_word))):#Win condition\
             #length of correct guess = length of word
             print "You win!"
             won = True
-        time.sleep(0.5)
+            break
+        print "The word is", len(secret_word), "letters long"
         guess = raw_input("Guess a letter or a word:   ").lower()
+        print '-------------------------------------------------------------------'
         if guess == secret_word:
             print "You win!"
             won = True
-        #elif len(word_so_far) == len(''.join(set(secret_word))):#Win condition\
-            #length of correct guess = length of word
-            #print "You win!"
-            #won = True
+        elif len(guess) > 1 and not(guess == secret_word):
+            print "Please only guess one letter at a time."
         elif guess in already_guessed: #Do not allow the same guess more than
             #once
             print "You have already guessed that letter. Please guess another" \
                   " letter"
         elif not(guess.isalpha()): #Do not allow numbers to be guessed
             print "Please enter a letter"
-        elif guess not in secret_word: #Incorrect letter reduces attempts by 1
+        elif guess not in secret_word: #Incorrect letter reduces max_guesses by 1
             already_guessed.append(guess)
-            attempts -= 1
+            MAX_GUESSES -= 1
             print "Try again"
-            time.sleep(1)
-            print str(attempts) + " attempts remaining"
-            time.sleep(0.5)
+            print str(MAX_GUESSES) + " attempts remaining"
         else: #Correct letter guess replaces associated dashes with that letter
             already_guessed.append(guess)
             word_so_far += guess
-    if attempts == 0: #Lose condition
+    if MAX_GUESSES == 0: #Lose condition
         print "Game over."
         print "The word was:  " , secret_word
     if won == True:
@@ -122,10 +127,12 @@ def play():
             won = False
             already_guessed = []
             secret_word = get_word()            
-            play()
+            play_wordgame()
             
         elif not(play_again.isalpha()):
             print 'You did not enter yes(y) or no(n), please enter yes(y) or no(n)'
         else:
             print 'All right, thanks for playing!'
+    guesses_made = 0
+    return None
     
