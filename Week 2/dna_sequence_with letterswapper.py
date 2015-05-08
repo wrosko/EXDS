@@ -40,13 +40,15 @@ def add_indel():
         while newindel == False:
             add = raw_input('Would you like to edit: \n a.string 1\n b.' \
                             'string 2 \n:').lower()
+           # index = raw_input('At which index:  ')
             if add.isalpha() and add == 'a':
                 str_1_list=list(string1)
                 print "".join(str_1_list)
                 cnt_str1 = range(len(str_1_list))
                 print "".join(map(str, cnt_str1))
+                add_str1 = raw_input('Please choose a character to add:    ').lower()
                 loc_str1 = int(raw_input('Before which numbered character should it be added?    '))
-                str_1_list.insert(loc_str1, '-')
+                str_1_list.insert(loc_str1, add_str1)
                 print "".join(str_1_list)
                 
                 
@@ -56,6 +58,8 @@ def add_indel():
                 print "".join(str_2_list)
                 cnt_str2 = range(len(str_2_list))
                 print "".join(map(str, cnt_str2))
+                #add_str2 = '-'
+                #add_str2 = raw_input('Please choose a character to add:    ').lower()
                 loc_str2 = int(raw_input('Before which numbered character should it be added?    '))
                 str_2_list.insert(loc_str2, '-')
                 print "".join(str_2_list)
@@ -65,36 +69,6 @@ def add_indel():
                 print 'incorrect input'
         break
     
-def del_indel():
-    while True:
-        newindel = False
-        while newindel == False:
-            prompt = raw_input('Would you like to edit: \n a.string 1\n b.' \
-                            'string 2 \n:').lower()
-            if prompt.isalpha() and prompt == 'a':
-                str_1_list=list(string1)
-                print "".join(str_1_list)
-                cnt_str1 = range(len(str_1_list))
-                print "".join(map(str, cnt_str1))
-                delete = int(raw_input('Please choose which number to delete: '))
-                del str_1_list[delete]
-                print "".join(str_1_list)
-                break
-                
-                newindel = True
-            elif prompt.isalpha() and prompt == 'b':
-                str_1_list=list(string1)
-                print "".join(str_1_list)
-                cnt_str1 = range(len(str_1_list))
-                print "".join(map(str, cnt_str1))
-                delete = int(raw_input('Please choose which number to delete: '))
-                del str_1_list[delete]
-                print "".join(str_1_list)
-                break
-                newindel = True
-            else:
-                print 'incorrect input'
-        break
 
 def dna_sequencer():
     strings()
@@ -110,17 +84,13 @@ def dna_sequencer():
                 print "Let's add an indel"
                 time.sleep(1)
                 print string1
-                #if promt = change string 1
-                   # new_str_1 = add_indel(string1, string 2)
-                #if prompt = change string 2
-                   # new_str_2 = 
+                add_indel()
 
                 
-                #sequence = True
+                sequence = True
             elif entry.isalpha() and entry in ['d']:
                 print 'Deleting an indel'
-                del_indel()
-                #sequence = True
+                sequence = True
             elif entry.isalpha() and entry in ['s']:
                 print 'Computing score'
                 sequence = True

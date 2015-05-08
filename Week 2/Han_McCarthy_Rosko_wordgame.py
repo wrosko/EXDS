@@ -67,7 +67,7 @@ def print_guessed(secret_word, letters_guessed):
 
     word_so_far = ''
     
-    ####### YOUR CODE HERE ######
+    #start of our code
     print #Line break
     for char in secret_word: #for each character in secret_word
         if char in letters_guessed: #checks if the char. is in letters_guessed
