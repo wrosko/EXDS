@@ -12,7 +12,7 @@ def strings():
             result = [string1.strip('actg')]
             print
             print
-            if result == ['']:      #Make a while loop here
+            if result == ['']:      
                 str1 = True
                 break
             else:
@@ -26,7 +26,7 @@ def strings():
             result = [string2.strip('actg')]
             print
             print
-            if result == ['']:      #Make a while loop here
+            if result == ['']:      
                 str2 = True
                 break
             else:
@@ -41,7 +41,8 @@ def add_indel():
             add = raw_input('Would you like to edit: \n a.string 1\n b.' \
                             'string 2 \n:').lower()
             if add.isalpha() and add == 'a':
-                str_1_list=list(string1)
+                #global str_1_list
+                #str_1_list=list(string1)
                 print "".join(str_1_list)
                 cnt_str1 = range(len(str_1_list))
                 print "".join(map(str, cnt_str1))
@@ -49,10 +50,10 @@ def add_indel():
                 str_1_list.insert(loc_str1, '-')
                 print "".join(str_1_list)
                 
-                
                 newindel = True
             elif add.isalpha() and add == 'b':
-                str_2_list=list(string2)
+                #global str_2_list
+                #str_2_list=list(string2)
                 print "".join(str_2_list)
                 cnt_str2 = range(len(str_2_list))
                 print "".join(map(str, cnt_str2))
@@ -72,32 +73,41 @@ def del_indel():
             prompt = raw_input('Would you like to edit: \n a.string 1\n b.' \
                             'string 2 \n:').lower()
             if prompt.isalpha() and prompt == 'a':
-                str_1_list=list(string1)
+               # global str_1_list
+                #str_1_list=list(string1)
                 print "".join(str_1_list)
                 cnt_str1 = range(len(str_1_list))
                 print "".join(map(str, cnt_str1))
                 delete = int(raw_input('Please choose which number to delete: '))
                 del str_1_list[delete]
                 print "".join(str_1_list)
+               
                 break
                 
                 newindel = True
             elif prompt.isalpha() and prompt == 'b':
-                str_1_list=list(string1)
-                print "".join(str_1_list)
-                cnt_str1 = range(len(str_1_list))
-                print "".join(map(str, cnt_str1))
+                #global str_2_list
+                #str_2_list=list(string2)
+                print "".join(str_2_list)
+                cnt_str2 = range(len(str_2_list))
+                print "".join(map(str, cnt_str2))
                 delete = int(raw_input('Please choose which number to delete: '))
-                del str_1_list[delete]
-                print "".join(str_1_list)
+                del str_2_list[delete]
+                print "".join(str_2_list)
                 break
                 newindel = True
             else:
                 print 'incorrect input'
         break
+#def score():
+    
 
 def dna_sequencer():
     strings()
+    global str_1_list
+    str_1_list=list(string1)
+    global str_2_list
+    str_2_list=list(string2)
     while True:
         sequence = False
         while sequence == False:
