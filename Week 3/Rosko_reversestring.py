@@ -19,7 +19,7 @@ def reverse_v2(s):
 def reverseprint(mystring):
     '''reverse s and then print each character of the reversed string\n 
 on a new line'''
-
+    s = raw_input('input: ')
     #which version of the reverse function should we use?
     
     reverse_string=reverse_v2(mystring)
