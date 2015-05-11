@@ -1,0 +1,5 @@
+http://codereview.stackexchange.com/questions/44168/streamlined-for-loop-for-comparing-two-lists
+http://www.tutorialspoint.com/python/python_for_loop.htm
+http://stackoverflow.com/questions/53513/best-way-to-check-if-a-list-is-empty
+http://www.cse.msu.edu/~cse231/PracticeOfComputingUsingPython/03_Strings/DNA/project04.pdf
+http://codereview.stackexchange.com/questions/86367/finding-the-dna-sequence-with-number-of-match-and-miss-match

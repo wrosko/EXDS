@@ -6,7 +6,7 @@ Description: DNA sequencer. Allows a user to input two sequences of DNA
     the score of the two sequences.
 """
 
-import time
+import time #imports time package 
 
 def strings():
     
@@ -160,8 +160,11 @@ def del_indel():
                 delete = raw_input('Please choose which number to delete: ')
                 print
                 if delete.isdigit() and int(delete) in cnt_str1:
-                    delete_1 = int(delete)
-                    del str_1_list[delete_1] #deletes the value at the given
+                    if str_1_list[int(delete)] is '-':#checks to see if object
+                        delete_1 = int(delete) #at the index is an indel
+                        del str_1_list[delete_1] #deletes the value at the given
+                    else:
+                        print 'ERROR. You can only delete an indel.'
                 elif delete.isdigit():
                     print 'ERROR That number is out of the index range, please'\
                           ' input a valid number next time.'
@@ -180,8 +183,11 @@ def del_indel():
                 delete = raw_input('Please choose which number to delete: ')
                 print
                 if delete.isdigit() and int(delete) in cnt_str2:
-                    delete_2 = int(delete)
-                    del str_2_list[delete_2]
+                    if str_2_list[int(delete)] is '-':
+                        delete_2 = int(delete)
+                        del str_2_list[delete_2]
+                    else:
+                        print 'ERROR. You can only delete an indel.'
                 elif delete.isdigit():
                     print 'ERROR That number is out of the index range, '\
                           'please input a valid number next time.'
