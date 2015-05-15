@@ -1,19 +1,24 @@
-
+'''
+'''
 import random
 import collections
 
 #state is key, number is entry
 def state(): #change to state_distribution()
     '''
+    state_distribution imports and reads FakeCustomerData.txt.
+    It stores each row of the document as a text file, then removes the
+    first line which is the title of each data column, and the last row
+    which is blank. Titles are stor
     '''
     infile = open('FakeCustomerData.txt','r')
     fileList = infile.read()
     customerdata = fileList.split('\n')#makes each row an entry
     del customerdata[-1]#deletes the blank line at end of document.
-    titles_ = customerdata.pop(0) #removes titles from list and returns them
+    customerdata.pop(0) #removes titles from list and returns them
     #customerlist=customerdata.remove()
     infile.close()
-    titles =list(titles_.split(','))#assigns removed titles to list
+    #titles =list(titles_.split(','))#assigns removed titles to list
     #customersinfo = customerdata.split(',')
     state =[]#empty list where states will go
     stateDict ={} #establishes dictionary
