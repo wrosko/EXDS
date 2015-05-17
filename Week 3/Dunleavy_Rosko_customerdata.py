@@ -1,5 +1,5 @@
 '''
-File: Dunleavy_Rosko_dnamatching.py
+File: Dunleavy_Rosko_customerdata.py
 Authors: Dunleavy, Rosko
 Description: Data analysis of the FakeCustomerData.txt file. Contains
     a function that lists the states, and number of customers from

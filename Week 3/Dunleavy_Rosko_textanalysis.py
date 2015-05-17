@@ -41,7 +41,7 @@ def text_modifier():
     #anything that is not alphabetic or a space with a space. The result is
     #stored as the variable line.
     line = re.sub("[^a-zA-Z+\s]"," ",line1)
-    LIST = []
+    LIST = [] #define a new list
 
     #Split line into a list at every new line
     bigwordlist = line.split('\n')
@@ -55,7 +55,7 @@ def text_modifier():
     LIST2= [item for sublist in LIST for item in sublist]
     
     global LIST3 #define LIST3 as global
-    LIST3 = []
+    LIST3 = []#Create new list
     #Adds entries to LIST3 that are just words and not spaces. Changes any
     #uppercase to lowercase.
     for c in LIST2:
