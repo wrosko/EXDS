@@ -14,3 +14,5 @@ about it.'''
         print 'at least one of the integers in pair is zero'
 
     return None
+
+#to call on function remember the dot integerpairs = myclass.MyClass(2,3)
