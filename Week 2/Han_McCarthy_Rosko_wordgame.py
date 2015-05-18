@@ -7,6 +7,7 @@ Description:
 
 # Import statement: DO NOT delete these! DO NOT write code above this!
 import random
+import time
 
 # -----------------------------------
 # Helper code
@@ -136,4 +137,5 @@ def play_wordgame():
         print 'Too many incorrect guesses!'
         print 'The word I was thinking of was',secret_word
         print 'Game over. You lost.'
+        reload(play_wordgame())
     return None 
