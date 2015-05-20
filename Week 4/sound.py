@@ -34,11 +34,11 @@ class Sound(object):
         sample_rate -- int, samples per second for the wave file (default 44100)
         channels -- int, number of channels, stereo=2, mono=1 (default 2)
         
-        If a filename is given, that file will be opened and loaded into the
+        If a filename is give, that file will be opened and loaded into the
         resulting object, and samples and seconds will be ignored.  Otherwise,
         if samples or seconds is given a blank Sound instance will be created
-        that has the given number of samples or the given time length in
-        seconds. The number of samples takes precedence over the number of
+        that has the given number of samples or a the given time length in
+        seconds. The number of samples takes precedence of the number of
         seconds.  '''
         # Don't change the number of channels, I did this because I only want
         # to have StereoSounds for this lab.
@@ -171,7 +171,7 @@ class Sound(object):
         return deepcopy(self)
 
     def save_as(self, filename):
-        '''Save this Sound to a new file.
+        '''Save this Sound to a new wave file.
         
         Arguments:
         filename -- str, Name of the new file to create. Don't forget the
@@ -189,12 +189,12 @@ class Sound(object):
         wavefile.setsampwidth(2)
         wavefile.setframerate(self.sample_rate)
         wavefile.setnframes(len(self))
-        sample_bytes = struct.pack('i'*data.size, *data)
+        sample_bytes = struct.pack('h'*data.size, *data)
         wavefile.writeframes(sample_bytes)
         wavefile.close()
 
 ####################------------------------------------------------------------
-## Sample Class
+## Sample Classes
 ####################------------------------------------------------------------
 
 class StereoSample(object):
@@ -204,7 +204,7 @@ class StereoSample(object):
     samp_array -- Numpy array, the sound file data array
     i -- int, index number of this particular sample
 
-    You should not need to create any StereoSample object instances in your code.
+    You should not need to create any StereoSample object instances by hand.
     Use methods of a Sound object instead. It will be good to look at the
     methods defined here, though, so you know what they do.
     '''
@@ -258,5 +258,4 @@ class StereoSample(object):
         '''Return this Sample's right value.'''
         return self.samp_array[self.index, 1]
 
-        
         

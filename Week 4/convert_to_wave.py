@@ -1,5 +1,5 @@
 import sound
-import stereosound as myfile
+import stereosound_1 as myfile
 # ??? should be replaced with the name of
 #the file which has your functions.
 
@@ -9,16 +9,16 @@ import stereosound as myfile
 #you have written.
 
 #Converts the sound in grace.wav file to a Sound object.
-snd = sound.Sound(filename='cartoon.wav')
+snd = sound.Sound(filename='water.wav')
 
 #The function fade that you have written is called
 #and the Sound object it returns is assigned to gracefade.
-cartoonfail = myfile.rem_vocals(snd)
+waterfaded = myfile.fade_out(snd, 100000.0)
 
 #The Sound object gracefade is converted to sound in
 #a wav file called grace_fade.wav.
 #This wav file did not exist before but is newly created.
-cartoonfail.save_as('cartoonfail.wav')
+waterfaded.save_as('waterfadeds.wav')
 
 
 

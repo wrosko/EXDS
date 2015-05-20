@@ -25,14 +25,14 @@ def fade_in(snd, fade_length):
 
 def fade_out(snd, fade_length):
     sndcopy = snd.copy()
-    #start_fade = len(sndcopy) - fade_length
+    start_fade = len(sndcopy) - (fade_length)
     n = fade_length
     for sample in sndcopy:
-        if sample.get_index() <= n:
+        if sample.get_index() >= start_fade:
             right = sample.get_right()
             left = sample.get_left()
-            newleft = int((n / fade_length)* left)
-            newright = int((n / fade_length)* right)
+            newleft = int(( n / fade_length)* left)
+            newright = int(( n / fade_length)* right)
             n -= 1
             sample.set_right(newright)
             sample.set_left(newleft)
