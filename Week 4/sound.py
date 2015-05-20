@@ -189,7 +189,8 @@ class Sound(object):
         wavefile.setsampwidth(2)
         wavefile.setframerate(self.sample_rate)
         wavefile.setnframes(len(self))
-        wavefile.writeframes(data.tobytes())
+        sample_bytes = struct.pack('i'*data.size, *data)
+        wavefile.writeframes(sample_bytes)
         wavefile.close()
 
 ####################------------------------------------------------------------

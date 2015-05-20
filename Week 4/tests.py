@@ -4,6 +4,8 @@ import ??? as myfile
 # ??? should be replaced with the name of
 #the file which has your functions.
 
+#info about unittest at https://docs.python.org/2/library/unittest.html
+
 def three_samples():
       '''Return a new sound with three samples.'''
       snd = Sound(samples=3)
@@ -102,8 +104,8 @@ def four_samples_fade():
       return snd
 
 class TestCases(unittest.TestCase):
-    def setUp(self):
-        pass
+##    def setUp(self):
+##        pass
   
     def test_rem_vocals(self):
         '''Test rem_vocals.'''
