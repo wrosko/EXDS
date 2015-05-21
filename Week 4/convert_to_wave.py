@@ -13,7 +13,7 @@ snd = sound.Sound(filename='water.wav')
 
 #The function fade that you have written is called
 #and the Sound object it returns is assigned to gracefade.
-waterfaded = myfile.fade_out(snd, 100000.0)
+waterfaded = myfile.fade_in(snd, 268128.0)
 
 #The Sound object gracefade is converted to sound in
 #a wav file called grace_fade.wav.

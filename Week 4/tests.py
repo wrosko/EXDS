@@ -1,4 +1,5 @@
 import unittest
+import logging
 from sound import Sound
 import stereosound_1 as myfile
 # ??? should be replaced with the name of
@@ -68,7 +69,7 @@ def four_samples_fade_in():
       smp.set_left(111)
       smp.set_right(111)
       return snd
-
+# do this by hand and check our function against it
 def four_samples_fade_out():
       '''Return a new sound to which fade-out has been applied.'''
       snd = Sound(samples=4)
@@ -107,21 +108,21 @@ class TestCases(unittest.TestCase):
 ##    def setUp(self):
 ##        pass
   
-##    def test_rem_vocals(self):
-##        '''Test rem_vocals.'''
-##        snd = three_samples()
-##        sol = three_samples_rem_vocals()
-##        studentsol = myfile.rem_vocals(snd)
-##        self.assertEqual(studentsol, sol)    
-##        self.assertNotEqual(studentsol, snd)
+    def test_rem_vocals(self):
+        '''Test rem_vocals.'''
+        snd = three_samples()
+        sol = three_samples_rem_vocals()
+        studentsol = myfile.rem_vocals(snd)
+        self.assertEqual(studentsol, sol)    
+        self.assertNotEqual(studentsol, snd)
         
-##    def test_fade_in(self):
-##        '''Test fade_in.'''
-##        snd = four_samples()
-##        sol = four_samples_fade_in()
-##        studentsol = myfile.fade_in(snd, 4)
-##        self.assertEqual(studentsol, sol)    
-##        self.assertNotEqual(studentsol, snd)
+    def test_fade_in(self):
+        '''Test fade_in.'''
+        snd = four_samples()
+        sol = four_samples_fade_in()
+        studentsol = myfile.fade_in(snd, 4)
+        self.assertEqual(studentsol, sol)    
+        self.assertNotEqual(studentsol, snd)
 
     def test_fade_out(self):
         '''Test fade_out.'''
@@ -131,5 +132,13 @@ class TestCases(unittest.TestCase):
         self.assertEqual(studentsol, sol)    
         self.assertNotEqual(studentsol, snd)
 
+    def test_fade(self):
+        '''Test fade_out.'''
+        snd = four_samples()
+        sol = four_samples_fade()
+        studentsol = myfile.fade(snd, 4)
+        self.assertEqual(studentsol, sol)    
+        self.assertNotEqual(studentsol, snd)
+##
 if __name__ == '__main__':
   unittest.main()
