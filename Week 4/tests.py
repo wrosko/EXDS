@@ -1,7 +1,7 @@
 import unittest
 import logging
 from sound import Sound
-import stereosound_1 as myfile
+import Kalra_Rosko_stereosound as myfile
 # ??? should be replaced with the name of
 #the file which has your functions.
 
