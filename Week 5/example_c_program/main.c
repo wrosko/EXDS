@@ -11,8 +11,11 @@
 /*Displaying Hello World*/
 int main(void)
 {
-    printf("Hello world!");
+#define inchesperft 12
+    printf("There are %d inches in a foot.\n", inchesperft);     
     return 0;
 }
-
+/***************************************************
+ * dksajf askdf ek ajei eiae fjia
+ */
 
