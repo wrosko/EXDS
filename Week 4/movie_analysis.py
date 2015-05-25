@@ -10,30 +10,40 @@ def mov():
     actors = []
     moviedict={}
     movielist = []
+    movieinform = []
+
     for i in movie_info:
 
-        mv_info_list = i.split(',')
+        i = i.replace('  ',' ')
+        movieinform.append(i.split(', '))
+        actors.append(movieinform[0])
         
-        actor = mv_info_list.pop(0)
-        actors.append(actor)
-        
-        movies = mv_info_list[1:]
-        movielist.append(movies)
+    print actors
+    print movieinform
 
     
-    movielist1 = [item for sublist in movielist for item in sublist]
-    movielist2 = set(movielist1)
-    movielist3 = []
-    movielist3.extend(movielist2)
+##    movielist1 = [item for sublist in movielist for item in sublist]
+##    movielist2 = set(movielist1)
+##    movielist3 = []
+##    movielist3.extend(movielist2)
+##
+##    print movielist2
+##    print '---------------------------------------------------------'
+##    print movielist3
+##    print '---------------------------------------------------------'
+##    print actors
 
-    print movielist2
-    print '---------------------------------------------------------'
-    print movielist3
 
 
-    for i in movie_info:
-        for j in movielist3:
-            if j in 
+    
+##    for i in movie_info:
+##        for j in movielist3:
+##            for k in actors:
+##                if j and k in i:
+##                    moviedict[j] = k
+##    print moviedict
+                    
+            
         
     
 
