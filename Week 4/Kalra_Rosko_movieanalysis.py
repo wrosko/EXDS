@@ -2,9 +2,10 @@
 File: Kalra_Rosko_movieanalysis.py
 Authors: Kalra, Rosko
 Description: Movie database analyzer that will set up a dictionary with movies
-    as the key, and actors as the values. Then it will show the actors in two
-    movies that are similar, different, and then in one and not the other. It
-    also shows an actors coactors.
+    as the keys, and sets of actors as the values. Based on two movies entered
+    by a user, the program will output all of the actors in the two movies, the
+    actors who are in both movies, and the actors who are in one movie but not
+    the other. Additionally, the program is able to output an actors coactors.
 """
 
 import string #import built in string module.
@@ -33,8 +34,8 @@ def dic():
     #We got help from Nicol on how to use sets in this part so we can use
     #set commands later.
     
-    #Take each entry in movie_info and strip \n's, split it into a list separated
-    #by ",", and replace double spaces.
+    #Take each entry in movie_info and strip \n's, split it into a list
+    #separated by ",", and replace double spaces.
     for i in movie_info:
         i = i.strip('\n')
         i = i.replace('  ',' ')
@@ -67,18 +68,14 @@ def movieinput():
     """
     movieinput()takes the raw input from the user for a movie name, and then
     capitalizes the first letter of every word. It also takes into account
-    the anomolies in the movies.txt file like extra space, the You have got
-    mail title, and making it so that if a user inputs "and", it will be
-    changed to &. Will return the title of the movie.
+    the anomolies in the movies.txt file like extra space, and making it so
+    that if a user inputs "and", it will be changed to &. Will return the title
+    of the movie.
     """
     title = raw_input('Movie title:   ')
     title = string.capwords(title) #with string module,capitalize first letters
 
-    #take into account You have got mail capitalization, "and", and if the
-    #title is in the moviesdict.
-    if title == "You Have Got Mail":
-        title = title[0] + title[1:].lower()
-        return title
+    #take into account "and", and if the title is in the moviesdict.
     if 'And' in title:
         title = title.replace('And', '&')
         return title
@@ -94,12 +91,12 @@ def movieinput():
 
 def actorinput():
     """
-    actorinputs() prompts the user for the name of an actor. It capitalizes
+    actorinput() prompts the user for the name of an actor. It capitalizes
     the first letters of the actor's name. Checks to see if actor is a value
     of the dictionary.
     """
     actor = raw_input('Movie actor:   ')
-    actor = string.capwords(actor) #capitalice first letter of every word
+    actor = string.capwords(actor) #capitalize first letter of every word
     
     if actor in actors:
         return actor
@@ -148,7 +145,7 @@ def compare(): #compare_movies():
         #statement. It is merely for aesthetic pleasure.
         allactors = list(set(movie1actors) | set(movie2actors)) #union
         similaractors = list(set(movie1actors) & set(movie2actors))#intersection
-        diffactors = list(set(movie1actors) ^ set(movie2actors))#symmetrical diff.
+        diffactors = list(set(movie1actors) ^ set(movie2actors))#symmetrical diff
 
         print 'All of the actors in the two named movies are:  ',allactors
         print 'The two movies share the following actors: ',similaractors
@@ -179,7 +176,7 @@ def coactors():
         actors = list(set([item for sublist in actors for item in sublist]))
         actors.remove(actor)
         actorsdict[actor] = actors #set actors1 as a dictionary with the actor
-                                #as the key, and coactors as values.
+                                   #as the key, and coactors as values.
             
         print
         print actor+"'s coactors are: ",actorsdict.get(actor)#print dict value
@@ -188,10 +185,10 @@ def coactors():
     
  
 
-def mov():
+def movieanalysis():
     """
     movieanalysis() is the main function of the program. It will call on dic(),
-    compare(), and coactors(). It prompts the user to input a. , b. , or c.
+    compare(), and coactors(). It prompts the user to input a, b, or c
     to choose betwen comparing movies, finding coactors, and quitting the
     program
     """
@@ -217,7 +214,7 @@ def mov():
                 print 'QUIT'
                 analysis = True
         else:
-            print 'Please choose a. b. or c.'
+            print 'Please choose a, b, or c'
             
         
                           
