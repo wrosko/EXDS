@@ -1,16 +1,21 @@
 import string
-import re
 
 
 def dic():
+    """
+    dic() reads the file and stores each line of the file as an entry in a
+    list. Establishes a dictionary, and two lists to be used to create the
+    dictionary.
+    """
     infile = open('movies.txt','r')
     filelist = infile.readlines()
     infile.close()
+    movie_info = filelist #assign filelist as a variable
 
-    movie_info = filelist
+    #make actors and movies global, then establish the actor and movie list
+    #lists, and make the moviedictionary.
     global actors
     global movies
-    #global movies
     actors = []
     moviedict={}
     movielist = []
@@ -18,16 +23,22 @@ def dic():
 
     #We got help from Nicol on how to use sets in this part so we can use
     #set commands later.
+    #Take each entry in movie_info and split it into a list separated by ","
     for i in movie_info:
         i = i.strip('\n')
         i = i.replace('  ',' ')
         i = i.split(', ')
-        
+        #add movies to movie list and actors to actor list
         actorsmovies = i[1:]
         actors.append(i[0])
         movielist.append(actorsmovies)
-        
+
+        #for each entry in actorsmovies, use capword function from string
+        #module to capitalize each word in the movie titles.
         for j in actorsmovies:
+            j=string.capwords(j)
+
+            #Set movies as the keys in the dictionary, and actors as values
             if j not in moviedict:
                 movieset = set()
                 movieset.add(i[0])
@@ -37,28 +48,43 @@ def dic():
                 movieset.add(i[0])
                 moviedict[j] = movieset          
     movies = moviedict.keys()
-    print actors
-    print movielist
     return moviedict
 
 
 def movieinput():
-    comparing = False
-    while comparing == False:
-        title = raw_input('Movie title:   ')
-        title = string.capwords(title)
-        if title == "You Have Got Mail":
-            title = title[0] + title[1:].lower()
-        if 'And' in title:
-            title = title.replace('And', '&')
-        if title in movies:
-            return title
-            comparing = True
-            break
-        else:
-            print 'ERROR, the movie you entered is not in the text file'
-            break
-    return title
+    title = raw_input('Movie title:   ')
+    title = string.capwords(title)
+    
+    if title == "You Have Got Mail":
+        title = title[0] + title[1:].lower()
+        return title
+    if 'And' in title:
+        title = title.replace('And', '&')
+        return title
+    if title in movies:
+        return title
+    if title == None:
+        
+        print "ERROR, you didn't enter anything."
+        return None
+    else:
+        print 'ERROR, the movie you entered is not in the file'
+        return None
+            
+
+def actorinput():
+    actor = raw_input('Movie actor:   ')
+    actor = string.capwords(actor)
+    
+    if actor in actors:
+        return actor
+    if actor == None:
+        print "ERROR, you didn't enter anything."
+        return None
+    else:
+        print 'ERROR, the actor you entered is not in the file'
+        return None
+    
     
 
 def comp(): #compare_movies():
@@ -77,6 +103,74 @@ def comp(): #compare_movies():
     print
     print 'Please input the title of the second movie'
     movie2 = movieinput()
+
+    if movie1 == None:
+        print 'There is nothing to compare'
+    elif movie2 == None:
+        print 'There is nothing to compare'
+    else:
+        movie1actors = dic().get(movie1)
+        movie2actors = dic().get(movie2)
+
+        allactors = list(set(movie1actors) | set(movie2actors)) #union
+        similaractors = list(set(movie1actors) & set(movie2actors))#intersection
+        diffactors = list(set(movie1actors) ^ set(movie2actors))#symmetrical diff.
+
+        print 'All of the actors in the two named movies are:  ',allactors
+        print 'The two movies share the following actors: ',similaractors
+        print 'The actors who are in only one of the movies are: ',diffactors
+    
+
+def coactors():
+    
+    print "Please input the actor's name."
+    actor = actorinput()
+    actors = []
+    
+    if actor == None:
+        print 'The actor was not in the file'
+        print
+    else:
+        for k in dic():
+            values = list(dic().get(k))
+            if actor in values:
+                actors.append(values)
+        actors = list(set([item for sublist in actors for item in sublist]))
+        actors.remove(actor)
+            
+        print
+        print actor+"'s coactors are: ",actors
+        print
+        
+    
+ 
+
+def mov():
+    dic()
+    analysis = False
+    while analysis == False:
+        print
+        entry = raw_input('Hello! Welcome to the movie analyzer. please pick' \
+                          ' an option. \n'
+                          'a. "compare movies" to compare the actors in each.'\
+                          '\n'
+                          'b. "coactors" to find the coactors of an actor. \n'
+                          'c. "quit" to quit the program.\n:').lower()
+        print
+        
+        if entry.isalpha() and entry in ['a']:
+            comp()
+        elif entry.isalpha() and entry in ['b']:
+            coactors()
+        elif entry.isalpha() and entry in ['c']:
+                print 'QUIT'
+                analysis = True
+            
+        
+                          
+        
+
+    
     
     
             
