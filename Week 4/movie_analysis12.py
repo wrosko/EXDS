@@ -1,13 +1,4 @@
-"""
-File: Kalra_Rosko_movieanalysis.py
-Authors: Kalra, Rosko
-Description: Movie database analyzer that will set up a dictionary with movies
-    as the key, and actors as the values. Then it will show the actors in two
-    movies that are similar, different, and then in one and not the other. It
-    also shows an actors coactors.
-"""
-
-import string #import built in string module.
+import string
 
 
 def dic():
@@ -24,6 +15,7 @@ def dic():
     #make actors and movies global, then establish the actor and movie list
     #lists, and make the moviedictionary.
     global actors
+    #global movies
     global moviedict
     actors = []
     moviedict={}
@@ -32,9 +24,7 @@ def dic():
 
     #We got help from Nicol on how to use sets in this part so we can use
     #set commands later.
-    
-    #Take each entry in movie_info and strip \n's, split it into a list separated
-    #by ",", and replace double spaces.
+    #Take each entry in movie_info and split it into a list separated by ","
     for i in movie_info:
         i = i.strip('\n')
         i = i.replace('  ',' ')
@@ -59,7 +49,7 @@ def dic():
                 movieset.add(i[0])
                 moviedict[j] = movieset
     #create movie list from keys of dictionary, return the dictionary
-    
+    #movies = moviedict.keys()
     return moviedict
 
 
@@ -112,7 +102,7 @@ def actorinput():
     
     
 
-def compare(): #compare_movies():
+def comp(): #compare_movies():
     
     '''
     Compares two movies in terms of the actors in the two movies.
@@ -136,16 +126,11 @@ def compare(): #compare_movies():
     elif movie2 == None:
         print 'There is nothing to compare'
 
-    #call on the dic() function to get the dictionary, and then get the values
-    #of the dictionary with the get() command.
+    #call on the dic() function to get the dictionary    
     else:
         movie1actors = dic().get(movie1)
         movie2actors = dic().get(movie2)
-        
-        #Use union, intersection, and symmetrical difference on the sets to
-        #find the actors' relationships to the given movies.
-        #list() command is used to remove the set(....) part from the printed
-        #statement. It is merely for aesthetic pleasure.
+
         allactors = list(set(movie1actors) | set(movie2actors)) #union
         similaractors = list(set(movie1actors) & set(movie2actors))#intersection
         diffactors = list(set(movie1actors) ^ set(movie2actors))#symmetrical diff.
@@ -156,21 +141,14 @@ def compare(): #compare_movies():
     
 
 def coactors():
-    """
-    coactors() uses results from the dictionary to find coactors of the actor
-    entered by the user. Calls on the actorinput() function. Prints the actor's
-    coactors.
-    """
     
     print "Please input the actor's name."
-    actor = actorinput()#call on actorinput() function
-    actors = [] #empty list
-    actorsdict = {} #empty dictionary
+    actor = actorinput()
+    actors = []
+    
     if actor == None:
         print 'The actor was not in the file'
         print
-    #for each key in dic(), get values. Then append those values to the
-        #actor list
     else:
         for k in dic():
             values = list(dic().get(k))
@@ -178,28 +156,19 @@ def coactors():
                 actors.append(values)
         actors = list(set([item for sublist in actors for item in sublist]))
         actors.remove(actor)
-        actorsdict[actor] = actors #set actors1 as a dictionary with the actor
-                                #as the key, and coactors as values.
             
         print
-        print actor+"'s coactors are: ",actorsdict.get(actor)#print dict value
+        print actor+"'s coactors are: ",actors
         print
         
     
  
 
 def mov():
-    """
-    movieanalysis() is the main function of the program. It will call on dic(),
-    compare(), and coactors(). It prompts the user to input a. , b. , or c.
-    to choose betwen comparing movies, finding coactors, and quitting the
-    program
-    """
-    dic()#Calls on dic()
+    dic()
     analysis = False
-    while analysis == False:#Establsih a while loop
+    while analysis == False:
         print
-        #Prompt for user input
         entry = raw_input('Hello! Welcome to the movie analyzer. please pick' \
                           ' an option. \n'
                           'a. "compare movies" to compare the actors in each.'\
@@ -207,10 +176,9 @@ def mov():
                           'b. "coactors" to find the coactors of an actor. \n'
                           'c. "quit" to quit the program.\n:').lower()
         print
-        #depending on input, a different function will be called, or program
-        #will quit.
+        
         if entry.isalpha() and entry in ['a']:
-            compare()
+            comp()
         elif entry.isalpha() and entry in ['b']:
             coactors()
         elif entry.isalpha() and entry in ['c']:
@@ -227,3 +195,42 @@ def mov():
     
     
             
+
+
+
+
+
+##        if 'and' in movie1:
+##            movie1.replace('and', '&')
+##            
+##        return movie1
+    
+    # allows the program to recognize a movie even if entered in lowercase
+##    movie1 = movie1.lower()
+##    movie2 = movie2.lower()
+
+##    # prints an error message if one of the selected movies is not in the file
+##    if movie1 not in ???:
+##        print movie1 'is not in the datafile'
+##        movie1 = raw_input('Please select another movie: ')
+##    if movie2 not in ???:
+##        print movie2 'is not in the datafile'
+##        movie2 = raw_input('Please select another movie: ')
+##
+##    # prints all of the actors who are in one or both movies
+##
+##    # return a new set with actors from the movie1 and movie2
+##    union(other,...)
+##
+##    # prints all of the actors who are common to both movies
+##
+##    #return a new set with actors common to movie1 and movie2
+##    intersection(other,...)
+##    frozenset('abc').intersection('cbs')
+##    # prints all of the actors who are in one of the two movies but not both
+##
+##    # return a new set with actors in either movie1 or movie2 but not both
+##    symmetric_difference(other)
+
+   # return None
+    
