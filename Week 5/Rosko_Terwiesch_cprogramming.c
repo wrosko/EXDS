@@ -20,14 +20,13 @@ int main()
         multiple = user_number * last_multiple;
         printf("%d x %d is %d \n\n", user_number,last_multiple,multiple);
         last_multiple = last_multiple - 1;//decrease the last_multiple value by 1
-        stilltrue = "true";
     }
 
     } else {
         printf("That was not an integer. \n");
-        stilltrue = "false"; //This isn't needed here
+        stilltrue = false; //This isn't needed here
 
-    }break;
+    }
     }
     return 0;
 

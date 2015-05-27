@@ -1,12 +1,20 @@
+/*Filename/projectname: Rosko_terwiesch_multiplication.c
+*Authors: Rosko,Terwiesch
+*Description: Prints out a given number's multiplication table. Takes
+*two inputs, the number, and the max number it will be multiplied by.*/
+
+
+
+
 #include <stdio.h>
-#define true 1
-#define false 0
+#include <stdbool.h>
+
 int main()
 {
     int user_number;//create a new integer variable
     int last_multiple;//create a new integer variable for max in mult table
-    //int stilltrue = "false"; //create integer to use in while
-    while (false){//initiate while loop
+    int stilltrue = "false"; //create integer to use in while
+    while (stilltrue == "false"){//initiate while loop
     printf("Please enter a positive integer you would like the table for and"
            " hit enter, then enter the max value of its multiplication "
            "table: \n");
@@ -21,14 +29,13 @@ int main()
         multiple = user_number * last_multiple;
         printf("%d x %d is %d \n\n", user_number,last_multiple,multiple);
         last_multiple = last_multiple - 1;//decrease the last_multiple value by 1
-        true;
     }
 
     } else {
         printf("That was not an integer. \n");
-        false; //This isn't needed here
+        stilltrue = false; //This isn't needed here
 
-    }break;
+    }
     }
     return 0;
 
