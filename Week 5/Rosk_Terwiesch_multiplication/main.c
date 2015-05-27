@@ -8,13 +8,12 @@
 
 #include <stdio.h>
 #include <stdbool.h>
-
 int main()
 {
     int user_number;//create a new integer variable
     int last_multiple;//create a new integer variable for max in mult table
-    int stilltrue = "false"; //create integer to use in while
-    while (stilltrue == "false"){//initiate while loop
+    int stilltrue = false; //create integer to use in while
+    while (stilltrue == false){//initiate while loop
     printf("Please enter a positive integer you would like the table for and"
            " hit enter, then enter the max value of its multiplication "
            "table: \n");
@@ -32,10 +31,10 @@ int main()
     }
 
     } else {
-        printf("That was not an integer. \n");
+        printf("That was not an integer. \nPlease input an integer next time. \n");
         stilltrue = false; //This isn't needed here
 
-    }
+    }break;
     }
     return 0;
 
