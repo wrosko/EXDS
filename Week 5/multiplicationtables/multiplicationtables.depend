@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1432662005 source:d:\programming\2015\multiplicationtables\main.c
+	<stdio.h>
+	<stdio.h>
+
+1432742242 source:c:\users\wrosko.bcis\desktop\exds\week 5\multiplicationtables\main.c
+	<stdio.h>
+	<stdbool.h>
+
