@@ -1,5 +1,9 @@
 # depslib dependency file v1.0
-1432750424 source:d:\users\wrosko\desktop\exds\week 5\rosk_terwiesch_multiplication\main.c
+1432910618 source:d:\users\wrosko\desktop\exds\week 5\rosk_terwiesch_multiplication\main.c
+	<stdio.h>
+	<stdbool.h>
+
+1432911338 source:d:\users\wrosko\desktop\exds\week 5\rosk_terwiesch_multiplication\rosko_terwiesch_cprogrammingmult.c
 	<stdio.h>
 	<stdbool.h>
 

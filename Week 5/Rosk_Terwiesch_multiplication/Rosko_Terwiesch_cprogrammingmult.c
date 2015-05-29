@@ -9,11 +9,12 @@ size.*/
 #include <stdio.h>
 #include <stdbool.h>
 
-int main()
-{
+int main() {
+
     int user_number;//create a new integer variable
     int last_multiple;//create a new integer variable for max in mult table
     int stilltrue = false; //create integer to use in while
+
     while (stilltrue == false){//initiate while loop
     printf("Please enter a positive integer you would like the table for and"
            " hit enter, then enter the max value of its multiplication "
@@ -28,6 +29,7 @@ int main()
     while (last_multiple > 0){
 
         int multiple;//multiple of user_number and last_multiple
+
         multiple = user_number * last_multiple;
         printf("%d x %d is %d \n\n", user_number,last_multiple,multiple);
         last_multiple = last_multiple - 1;//decrease the last_multiple value by 1
@@ -45,3 +47,4 @@ int main()
     return 0;
 
 }
+
